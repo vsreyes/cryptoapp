@@ -10,12 +10,20 @@ const { Option } = Select;
 const News = ({ simplified }) => {
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 10 : 100 }) 
 
-  console.log(cryptoNews);
+  if(!cryptoNews?.value) return 'Loading...';
 
   return (
-    <div>
-      News
-    </div>
+    <Row gutter={[ 24, 24]}>
+      {cryptoNews.value.map((news, i) => (
+        <Col xs={24} sm={12} lg={8} key={i}>
+          <Card hoverable className="news-card">
+            <a href={news.url} target="_blank" ref="noreferrer">
+              
+            </a>
+          </Card>
+        </Col>
+      ))}
+    </Row>
   )
 }
 
