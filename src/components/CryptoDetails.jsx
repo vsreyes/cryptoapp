@@ -40,9 +40,9 @@ const CryptoDetails = () => {
   ];
 
   return (
-    <div>
-      CryptoDetails {coinId}
-    </div>
+    <col>
+      
+    </col>
   )
 }
 
