@@ -40,8 +40,8 @@ const CryptoDetails = () => {
   ];
 
   return (
-    <col className="coin-detail-container">
-      <col className="coin-heading-container">
+    <Col className="coin-detail-container">
+      <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
           {cryptoDetails.name} ({cryptoDetails.slug}) Price
         </Title>
@@ -49,11 +49,19 @@ const CryptoDetails = () => {
           {cryptoDetails.name} live price in US dollars. 
           View value statistics, market cap and supply.
         </p>
-      </col>
+      </Col>
       <Select defaultValue="7d" className="select-timeperiod" placeholder="Select Time Period" onChange={(value) => setTimePeriod(value)}>
       {time.map((date) => <Option key={date}>{date}</Option>)}
       </Select>
-    </col>
+      {/* line chart.... */}
+      <Col className="stats-container">
+        <Col className="coin-value-statistics">
+          <Title level={3} className="coin-details-heading">
+            {cryptoDetails.name} Value Statistics
+          </Title>
+        </Col>
+      </Col>
+    </Col>
   )
 }
 
