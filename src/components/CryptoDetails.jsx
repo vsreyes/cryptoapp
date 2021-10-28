@@ -16,8 +16,8 @@ const CryptoDetails = () => {
   const { coinId } = useParams();
   const [timeperiod, setTimePeriod] = useState('7d');
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
-  const cryptoDetails = data?.data?.coin;
+  {/*const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });*/}
+const cryptoDetails = data?.data?.coin;
 
   {/*if (isFetching) return <Loader />;*/}
 
@@ -65,6 +65,25 @@ const CryptoDetails = () => {
           </p>
         </Col>
         {stats.map(({ icon, title, value}) => (
+          <Col className="coin-stats">
+            <Col className="coin-stats-name">
+                <Text>{icon}</Text>
+                <Text>{title}</Text>
+            </Col>
+            <Text className="stats">{value}</Text>
+          </Col>
+        ))}
+        </Col>
+        <Col className="other-stats-info">
+        <Col className="coin-value-statistics-heading">
+          <Title level={3} className="coin-details-heading">
+            {cryptoDetails.name} Other Statistics
+          </Title>
+          <p>
+            An overview showing the stats of all cryptocurrencies
+          </p>
+        </Col>
+        {genericStats.map(({ icon, title, value}) => (
           <Col className="coin-stats">
             <Col className="coin-stats-name">
                 <Text>{icon}</Text>
